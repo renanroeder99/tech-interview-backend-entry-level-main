@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+until pg_isready -h db -p 5432 -U postgres; do
+  sleep 2
+done
+
+until redis-cli -h redis ping; do
+  sleep 2
+done
+
+# If running the rails server then create or migrate existing database
+if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  ./bin/rails db:prepare
+fi
+
+exec "${@}"
