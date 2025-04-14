@@ -1,0 +1,9 @@
+mark_carts_as_abandoned_job:
+  cron: "*/10 * * * *"
+  class: "MarkCartsAsAbandonedJob"
+  queue: default
+
+remove_abandoned_carts_job:
+  cron: "*/10 * * * *"
+  class: "RemoveAbandonedCartsJob"
+  queue: default

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#show'
   post '/cart' => 'carts#create'
   post '/cart/add_item' => 'carts#add_item'
+  post '/cart/add_items' => 'carts#add_item'
+  delete '/cart/:product_id' => 'carts#remove_item'
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "rails/health#show"
